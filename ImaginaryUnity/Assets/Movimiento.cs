@@ -24,8 +24,6 @@ public class Movimiento : MonoBehaviour {
 		if (Input.GetKey (KeyCode.D)) {
 			transform.Translate(Vector3.right * Time.deltaTime *4);
 		}
-		transform.position = new Vector3(Input.mousePosition.x,
-			Input.mousePosition.y,
-			Input.mousePosition.z);
+
 	}
 }
