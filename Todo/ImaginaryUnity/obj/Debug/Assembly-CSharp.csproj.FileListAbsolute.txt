@@ -19,3 +19,4 @@ D:\Bund\Documents\GitHub\ImaginaryProject\Todo\ImaginaryUnity\Temp\bin\Debug\Uni
 D:\Bund\Documents\GitHub\ImaginaryProject\Todo\ImaginaryUnity\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 D:\Bund\Documents\GitHub\ImaginaryProject\Todo\ImaginaryUnity\obj\Debug\Assembly-CSharp.dll
 D:\Bund\Documents\GitHub\ImaginaryProject\Todo\ImaginaryUnity\obj\Debug\Assembly-CSharp.pdb
+D:\Bund\Documents\GitHub\ImaginaryProject\Todo\ImaginaryUnity\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
