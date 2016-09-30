@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerViewController : MonoBehaviour {
 
+	public GameObject player;
 	public float sensitivityX = 15F;
 	public float sensitivityY = 15F;
 	public float minimumX = -360F;
@@ -13,7 +14,7 @@ public class PlayerViewController : MonoBehaviour {
 	float rotationX = 0F;
 	float rotationY = 0F;
 	Rigidbody rigid;
-	Quaternion originalRotation;
+	Quaternion originalRotation,playerRotate;
 
 	void Start ()
 	{
@@ -35,12 +36,15 @@ public class PlayerViewController : MonoBehaviour {
 		rotationY = ClampAngle (rotationY, minimumY, maximumY);
 
 		//print ("rotacionX=" + rotationX);
-		//print ("rotacionY=" + rotationY);
+		print ("rotacionY=" + rotationY);
 
 		Quaternion xQuaternion = Quaternion.AngleAxis (rotationX, Vector3.up);
 		Quaternion yQuaternion = Quaternion.AngleAxis (rotationY, -Vector3.right);
 
 		transform.localRotation = originalRotation * xQuaternion * yQuaternion;
+
+		playerRotate *= Quaternion.Euler (0f, rotationY, 0f);
+		player.transform.localRotation = playerRotate;
 	}
 
 	public static float ClampAngle (float angle, float min, float max)
