@@ -4,39 +4,43 @@ using System.Collections;
 
 public class PlayerMovementController : MonoBehaviour {
 
-	public float speed= 2f;
-	public float rotateSpeed = 2F;
-	CharacterController charas;
+	public float speed;
+	public float gravity = 20.0F;
 
-	Vector2 mouseVel;
+	CharacterController charas;
+	Vector3 moveDirection = Vector3.zero;
 
 	void Start(){
 		charas = GetComponent<CharacterController> ();
 	}
 
-	void Update() {
-		
-		//transform.Rotate(0, Input.GetAxis("Horizontal") * rotateSpeed, 0);
-		//transform.Rotate(0, Input.GetAxis("Mouse X") * rotateSpeed, 0);
-			
-		Vector3 forward = transform.TransformDirection(Vector3.forward);
-		float curSpeed = speed * Input.GetAxis("Vertical");
-		charas.SimpleMove(forward * curSpeed);
+	void FixedUpdate() {
 
-		/*float h = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-		float v = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-
-		Vector3 RIGHT = transform.TransformDirection(Vector3.right);
-		Vector3 FORWARD = transform.TransformDirection(Vector3.forward);
-
-		transform.localPosition += RIGHT * h;
-		transform.localPosition += FORWARD * v;*/
+		if (charas.isGrounded) {
+			moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+			moveDirection = transform.TransformDirection(moveDirection);
+			moveDirection *= speed;
+		}
+		moveDirection.y -= gravity * Time.deltaTime;
+		charas.Move(moveDirection * Time.deltaTime);
 	}
 
-	void FixedUpdate () {
-		//transform.Rotate(0f,(mouseVel.x * Time.deltaTime),0f);
+	void Update(){
+		Run ();
 	}
 
+	public void Run(){
 
+		if (Input.GetKeyDown (KeyCode.LeftShift)) {
+			speed = 8f;
+			GetComponent<PlayerViewController> ().StepSpeed = 0.04f;
+			print ("is running");
+		}
+		if (Input.GetKeyUp (KeyCode.LeftShift)) {
+			speed = 4f;
+			GetComponent<PlayerViewController> ().StepSpeed = 0.01f;
+			print ("is walking");
+		}
+	}
 
 }
