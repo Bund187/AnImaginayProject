@@ -44,6 +44,8 @@ public class PlayerController : MonoBehaviour {
 				{
 					spriteRend.flipX = false;
 					anim.SetBool("RunRight", true);
+					anim.SetBool("RunDown", false);
+					anim.SetBool("RunUp", false);
 					moveSpeed = 1;
 					transform.Translate(new Vector3(xMove * moveSpeed * Time.deltaTime, 0f, 0f));
 
@@ -55,6 +57,9 @@ public class PlayerController : MonoBehaviour {
 				{
 					spriteRend.flipX = true;
 					anim.SetBool("RunLeft", true);
+					anim.SetBool("RunDown", false);
+					anim.SetBool("RunRight", false);
+					anim.SetBool("RunUp", false);
 					moveSpeed = 1;
 					transform.Translate(new Vector3(xMove * moveSpeed * Time.deltaTime, 0f, 0f));
 				}
@@ -65,6 +70,8 @@ public class PlayerController : MonoBehaviour {
 				{
 					anim.SetBool("RunUp", true);
 					anim.SetBool("RunDown", false);
+					anim.SetBool("RunLeft", false);
+					anim.SetBool("RunRight", false);
 					moveSpeed = 1;
 					transform.Translate(new Vector3(0f, yMove * moveSpeed * Time.deltaTime, 0f));
 
@@ -76,6 +83,8 @@ public class PlayerController : MonoBehaviour {
 				{
 					anim.SetBool("RunDown", true);
 					anim.SetBool("RunUp", false);
+					anim.SetBool("RunLeft", false);
+					anim.SetBool("RunRight", false);
 					moveSpeed = 1;
 					transform.Translate(new Vector3(0f, yMove * moveSpeed * Time.deltaTime, 0f));
 				}
