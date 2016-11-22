@@ -4,22 +4,22 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
 	public float moveSpeed;
-	private bool facingRight;
+	public GameObject pauseCanvas;
 	public bool canMove;
 
-	private bool isMovingL=true, isMovingR = true, isMovingU = true, isMovingD = true;
-	private Animator anim;
-	private SpriteRenderer spriteRend;
+	bool isMovingL=true, isMovingR = true, isMovingU = true, isMovingD = true;
+	Animator anim;
+	SpriteRenderer spriteRend;
+	bool facingRight,isPaused,isPressed;
+	string idiom="esp";
 
 	void Start() {
-		//facingRight = true;
 		anim = GetComponent<Animator>();
 		canMove = true;
 		spriteRend = GetComponent<SpriteRenderer> ();
 	}
 
 	void FixedUpdate(){
-		//float xMove = Input.GetAxisRaw("Horizontal");
 
 		if (!canMove)   
 		{
@@ -27,9 +27,36 @@ public class PlayerController : MonoBehaviour {
 			return;
 		}
 		Move();
-		//Flip(xMove);
+	}
 
+	void Update(){
+		if ((Input.GetAxisRaw ("Pause") != 0)) {
+			Pause ();
+		} else
+			isPressed = false;
 
+		if ((Input.GetAxisRaw ("Inventory") != 0)) {
+			Pause ();
+		} else
+			isPressed = false;
+
+		
+	}
+
+	void Inventory(){
+	
+	}
+
+	void Pause(){
+		if (!isPressed) {
+			isPaused = !isPaused;
+			pauseCanvas.SetActive (isPaused);	
+			if (isPaused)
+				Time.timeScale = 0;
+			else
+				Time.timeScale = 1;
+			isPressed = true;
+		}
 	}
 
 	void Move() {
@@ -103,18 +130,6 @@ public class PlayerController : MonoBehaviour {
 
 	}
 
-	/*public void Flip(float xMove)
-	{
-		if (isMovingL || isMovingR) {
-			if (xMove > 0 && !facingRight || xMove < 0 && facingRight) {
-				facingRight = !facingRight;
-				Vector3 theScale = transform.localScale;
-				theScale.x *= -1;
-				transform.localScale = theScale;
-			}
-		}
-	}*/
-
 
 	public bool IsMovingR
 	{
@@ -165,6 +180,14 @@ public class PlayerController : MonoBehaviour {
 		set
 		{
 			isMovingD = value;
+		}
+	}
+	public string Idiom {
+		get {
+			return this.idiom;
+		}
+		set {
+			idiom = value;
 		}
 	}
 

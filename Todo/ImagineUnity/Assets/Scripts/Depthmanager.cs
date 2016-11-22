@@ -15,7 +15,7 @@ public class Depthmanager : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col){
 		if (col.tag == "Player") {
 			spriteRend.sortingOrder = col.gameObject.GetComponent<SpriteRenderer> ().sortingOrder + 1;
-		}
+		} 
 	}
 
 	void OnTriggerExit2D(Collider2D col){

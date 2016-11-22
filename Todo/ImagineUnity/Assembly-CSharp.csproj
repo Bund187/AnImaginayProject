@@ -45,11 +45,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BackgroundSizer.cs" />
      <Compile Include="Assets\Scripts\Depthmanager.cs" />
      <Compile Include="Assets\Scripts\DialogueController.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
-     <None Include="Assets\StreamingAssets\plantita\ingDialogue.txt" />
+     <None Include="Assets\StreamingAssets\DoorSwitch\espDialogue.txt" />
+     <None Include="Assets\StreamingAssets\plantita\engDialogue.txt" />
      <None Include="Assets\StreamingAssets\plantita\espDialogue.txt" />
+     <None Include="Assets\StreamingAssets\plantita2\espDialogue.txt" />
+     <None Include="Assets\StreamingAssets\plantita2\engDialogue.txt" />
+     <None Include="Assets\StreamingAssets\DoorSwitch\engDialogue.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

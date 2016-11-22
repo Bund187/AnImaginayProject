@@ -6,20 +6,28 @@ using UnityEngine.UI;
 public class DialogueController : MonoBehaviour {
 
 	ArrayList dialogue=new ArrayList();
-	string idiom="esp";
+
 	int i=0;
 	bool isPress;
 
-	void OnCollisionStay2D(Collision2D col){
-		if (col.collider.tag == "Player") {
+	public Text dialogueTxt, dialShadow;
 
-			StreamReader reader = new StreamReader (Application.dataPath + "/StreamingAssets" + "/" + gameObject.name + "/" + idiom + "Dialogue.txt");
+	void OnTriggerStay2D(Collider2D col){
+		if (col.tag == "Player") {
+
+			StreamReader reader = new StreamReader (Application.dataPath + "/StreamingAssets" + "/" + gameObject.name + "/" + GameObject.Find("Player").GetComponent<PlayerController>().Idiom + "Dialogue.txt");
+			dialogue.Clear ();
 			while (!reader.EndOfStream) {
 				dialogue.Add (reader.ReadLine ());
+			}
+			if (i >= dialogue.Count) {
+				i = 0;
 			}
 
 			if ((Input.GetAxisRaw ("Fire1") != 0)) {
 				if (!isPress) {
+					dialogueTxt.text = dialogue [i].ToString();
+					dialShadow.text= dialogue [i].ToString();
 					print ("linea 1 = " + dialogue [i]);
 					i++;
 					isPress = true;
@@ -29,12 +37,8 @@ public class DialogueController : MonoBehaviour {
 		}
 	}
 
-	public string Idiom {
-		get {
-			return this.idiom;
-		}
-		set {
-			idiom = value;
-		}
+	void OnTriggerExit2D(Collider2D col){
+		dialogueTxt.text = "";
+		dialShadow.text = "";
 	}
 }
