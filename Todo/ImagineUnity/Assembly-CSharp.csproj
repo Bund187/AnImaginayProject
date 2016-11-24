@@ -48,6 +48,9 @@
      <Compile Include="Assets\Scripts\BackgroundSizer.cs" />
      <Compile Include="Assets\Scripts\Depthmanager.cs" />
      <Compile Include="Assets\Scripts\DialogueController.cs" />
+     <Compile Include="Assets\Scripts\FadeInOut.cs" />
+     <Compile Include="Assets\Scripts\Inventory.cs" />
+     <Compile Include="Assets\Scripts\LevelManager.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <None Include="Assets\StreamingAssets\DoorSwitch\espDialogue.txt" />
      <None Include="Assets\StreamingAssets\plantita\engDialogue.txt" />

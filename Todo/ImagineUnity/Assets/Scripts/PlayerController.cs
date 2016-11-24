@@ -4,9 +4,9 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
 	public float moveSpeed;
-	public GameObject pauseCanvas;
 	public bool canMove;
 
+	GameObject pauseCanvas;
 	bool isMovingL=true, isMovingR = true, isMovingU = true, isMovingD = true;
 	Animator anim;
 	SpriteRenderer spriteRend;
@@ -32,25 +32,17 @@ public class PlayerController : MonoBehaviour {
 	void Update(){
 		if ((Input.GetAxisRaw ("Pause") != 0)) {
 			Pause ();
+			pauseCanvas.SetActive (isPaused);	
+
 		} else
 			isPressed = false;
-
-		if ((Input.GetAxisRaw ("Inventory") != 0)) {
-			Pause ();
-		} else
-			isPressed = false;
-
-		
 	}
 
-	void Inventory(){
-	
-	}
 
-	void Pause(){
+
+	public void Pause(){
 		if (!isPressed) {
 			isPaused = !isPaused;
-			pauseCanvas.SetActive (isPaused);	
 			if (isPaused)
 				Time.timeScale = 0;
 			else
@@ -188,6 +180,14 @@ public class PlayerController : MonoBehaviour {
 		}
 		set {
 			idiom = value;
+		}
+	}
+	public GameObject PauseCanvas {
+		get {
+			return this.pauseCanvas;
+		}
+		set {
+			pauseCanvas = value;
 		}
 	}
 

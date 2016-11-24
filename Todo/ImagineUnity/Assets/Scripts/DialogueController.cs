@@ -11,9 +11,17 @@ public class DialogueController : MonoBehaviour {
 	bool isPress;
 
 	public Text dialogueTxt, dialShadow;
+	public GameObject obj1;
 
 	void OnTriggerStay2D(Collider2D col){
 		if (col.tag == "Player") {
+
+			///////////pruebas
+			if (transform.name == "plantita") {
+				print ("objeto");
+				obj1.SetActive (true);
+			}
+			////////////
 
 			StreamReader reader = new StreamReader (Application.dataPath + "/StreamingAssets" + "/" + gameObject.name + "/" + GameObject.Find("Player").GetComponent<PlayerController>().Idiom + "Dialogue.txt");
 			dialogue.Clear ();
