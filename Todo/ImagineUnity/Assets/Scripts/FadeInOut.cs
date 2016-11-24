@@ -49,9 +49,10 @@ public class FadeInOut : MonoBehaviour {
 		if(color.a>=1){
 			color.a=254;
 			img.color=color;
-			SceneManager.LoadSceneAsync ("3scene", LoadSceneMode.Single);
-			DontDestroyOnLoad (inventory);
-			DontDestroyOnLoad (pause);
+            DontDestroyOnLoad(inventory);
+            DontDestroyOnLoad(pause);
+            SceneManager.LoadSceneAsync ("3scene", LoadSceneMode.Single);
+			
 		}
 	}
 }
