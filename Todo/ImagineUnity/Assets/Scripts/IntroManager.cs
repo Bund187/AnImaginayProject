@@ -3,7 +3,7 @@ using System.Collections;
 
 public class IntroManager : MonoBehaviour {
 
-	public GameObject playerEatH, mumEatH, playerEat, mumEat, playerSee, mumSee;
+	public GameObject playerEatH, mumEatH, playerEat, mumEat, playerSee, mumSee, sitDown, standUp, eating;
 	Animator anim, anim2, anim3, anim4;
 
 	bool isPress, isActive;
@@ -16,6 +16,16 @@ public class IntroManager : MonoBehaviour {
 	}
 
 	void Update () {
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            playerEat.SetActive(false);
+            sitDown.SetActive(false);
+            eating.SetActive(false);
+            playerEatH.SetActive(false);
+            standUp.SetActive(true);
+        }
+
 		gameObject.GetComponent<DialogueController> ().Dialogue ();
 
 		if ((Input.GetAxisRaw ("Fire1") != 0)) {
