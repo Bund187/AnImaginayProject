@@ -10,8 +10,17 @@ public class FadeInOut : MonoBehaviour {
 
 	bool isfading;
 	Color color;
+	float fadeInVal, fadeOutVal;
+	string scene;
 
 	void Start(){
+		if ((GameObject.Find ("Backgrnd").GetComponent ("IntroManager") as IntroManager) != null) {
+			fadeInVal = 0.01f;
+			fadeOutVal = 0.01f;
+		} else {
+			fadeInVal = 0.05f;
+			fadeOutVal = 0.05f;
+		}
 		isfading = false;
 		color = img.color;	
 	}
@@ -31,8 +40,7 @@ public class FadeInOut : MonoBehaviour {
 	}
 
 	void FadeIn(){
-//		print ("fadein="+img.color.a);
-		color.a-=0.05f;
+		color.a-=fadeInVal;
 		img.color=color;
 		if(color.a==0.1){
 			color.a=0;
@@ -42,8 +50,7 @@ public class FadeInOut : MonoBehaviour {
 	}
 
 	void FadeOut(){
-	//	print ("fadeOut="+img.color.a);
-		color.a+=0.05f;
+		color.a+=fadeOutVal;
 		img.color=color;
 
 		if(color.a>=1){
@@ -51,8 +58,35 @@ public class FadeInOut : MonoBehaviour {
 			img.color=color;
             DontDestroyOnLoad(inventory);
             DontDestroyOnLoad(pause);
-            SceneManager.LoadSceneAsync ("3scene", LoadSceneMode.Single);
+            SceneManager.LoadSceneAsync (scene, LoadSceneMode.Single);
 			
+		}
+	}
+
+	public bool Isfading {
+		get {
+			return this.isfading;
+		}
+		set {
+			isfading = value;
+		}
+	}
+
+	public float FadeInVal {
+		get {
+			return this.fadeInVal;
+		}
+		set {
+			fadeInVal = value;
+		}
+	}
+
+	public float FadeOutVal {
+		get {
+			return this.fadeOutVal;
+		}
+		set {
+			fadeOutVal = value;
 		}
 	}
 }

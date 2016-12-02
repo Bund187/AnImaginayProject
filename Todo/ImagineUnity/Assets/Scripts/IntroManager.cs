@@ -3,53 +3,43 @@ using System.Collections;
 
 public class IntroManager : MonoBehaviour {
 
-	public GameObject playerEatH, mumEatH, playerEat, mumEat, playerSee, mumSee, sitDown, standUp, eating;
-	Animator anim, anim2, anim3, anim4;
+	public GameObject mumTalk,mumEat, mumEatH, playerEatH,playerEat,sitDown, standUp, eating, door;
 
 	bool isPress, isActive;
+	Animator animEat,animEatH;
 
-	void Start () {
-		anim = playerEatH.GetComponent<Animator> ();
-		anim2 = mumEatH.GetComponent<Animator> ();
-		anim3 = mumEat.GetComponent<Animator> ();
-		anim4 = playerEat.GetComponent<Animator> ();
+	void Start(){
+		animEat = mumEat.GetComponent<Animator> ();
+		animEatH = mumEatH.GetComponent<Animator> ();
+
 	}
 
 	void Update () {
+		print ("I=" + GameObject.Find ("Backgrnd").GetComponent<DialogueController> ().I);
+		if (GameObject.Find ("Backgrnd").GetComponent<DialogueController> ().I >= 20) {
+				playerEatH.SetActive (false);
+				playerEat.SetActive (false);
+				sitDown.SetActive (false);
+				eating.SetActive (false);
+				door.SetActive (false);
+				standUp.SetActive (true);
 
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            playerEat.SetActive(false);
-            sitDown.SetActive(false);
-            eating.SetActive(false);
-            playerEatH.SetActive(false);
-            standUp.SetActive(true);
-        }
+				if ((Input.GetAxisRaw ("Fire1") != 0)) {
+					if (!isPress) {
+						animEat.enabled = false;
+						animEatH.enabled = false;
+						mumTalk.SetActive (true);
+						isPress = true;
+					}
+				} else
+					isPress = false;
+		}
+		if (GameObject.Find ("Backgrnd").GetComponent<DialogueController> ().I >= 27) {
+			animEat.enabled = true;
+			animEatH.enabled = true;
+			mumTalk.SetActive (false);
+		}
 
-		gameObject.GetComponent<DialogueController> ().Dialogue ();
-
-		if ((Input.GetAxisRaw ("Fire1") != 0)) {
-			if (!isPress) {
-				isActive = !isActive;
-
-				playerSee.SetActive (isActive);
-				mumSee.SetActive (isActive);
-				if (isActive) {
-					/*anim.enabled = false;
-					anim2.enabled = false;
-					anim3.enabled = false;
-					anim4.enabled = false;*/
-				} else {
-					/*anim.enabled = true;
-					anim2.enabled = true;
-					anim3.enabled = true;
-					anim4.enabled = true;*/
-				}
-
-				isPress = true;
-			}
-			
-		} else isPress = false;
-		
+		gameObject.GetComponent<DialogueController> ().DialogueFunc ();
 	}
 }

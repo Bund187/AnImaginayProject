@@ -8,25 +8,20 @@ public class DialogueController : MonoBehaviour {
 	ArrayList dialogue=new ArrayList();
 
 	int i=0;
-	bool isPress;
-	Text auxDial, auxDials; 
+	bool isPress,endDialogue;
+	Text auxDial, auxDials;
 
 	public Text dialogueTxt, dialShadow;
-	//public GameObject obj1;
+
 
 	void OnTriggerStay2D(Collider2D col){
 		if (col.tag == "Player") {
-			Dialogue ();
+			DialogueFunc ();
 		}
 	}
 
-	public void Dialogue(){
-		///////////pruebas
-		if (transform.name == "plantita") {
-			print ("objeto");
-			//obj1.SetActive (true);
-		}
-		////////////
+	public void DialogueFunc(){
+		
 		StreamReader reader =null;
 		if ((GameObject.Find ("Backgrnd").GetComponent ("IntroManager") as IntroManager) != null) {
 			reader = new StreamReader (Application.dataPath + "/StreamingAssets/intro/" /*+ GameObject.Find ("Player").GetComponent<PlayerController> ().Idiom*/ + "espDialogue.txt");
@@ -47,6 +42,12 @@ public class DialogueController : MonoBehaviour {
 					if(dialogue [i].ToString() == "M") {
 						i++;
 						dialogueTxt.color=Color.magenta;
+					}
+					if(dialogue [i].ToString() == "-") {
+						i++;
+					}
+					if(dialogue [i].ToString() == "x") {
+						dialogue.Clear ();	
 					}
 					dialogueTxt.text = dialogue [i].ToString ();
 					dialShadow.text = dialogue [i].ToString ();
@@ -84,5 +85,22 @@ public class DialogueController : MonoBehaviour {
 	void OnTriggerExit2D(Collider2D col){
 		dialogueTxt.text = "";
 		dialShadow.text = "";
+	}
+
+	public ArrayList Dialogue {
+		get {
+			return this.dialogue;
+		}
+		set {
+			dialogue = value;
+		}
+	}
+	public int I {
+		get {
+			return this.i;
+		}
+		set {
+			i = value;
+		}
 	}
 }
