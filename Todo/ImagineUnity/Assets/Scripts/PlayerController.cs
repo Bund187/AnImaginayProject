@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Move() {
-		this.moveSpeed = 1;
+		//this.moveSpeed = 1;
 		float xMove = Input.GetAxisRaw("Horizontal");
 		float yMove = Input.GetAxisRaw("Vertical");
 
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour {
 					anim.SetBool("RunRight", true);
 					anim.SetBool("RunDown", false);
 					anim.SetBool("RunUp", false);
-					moveSpeed = 1;
+					//moveSpeed = 1;
 					transform.Translate(new Vector3(xMove * moveSpeed * Time.deltaTime, 0f, 0f));
 
 				}
@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour {
 					anim.SetBool("RunDown", false);
 					anim.SetBool("RunRight", false);
 					anim.SetBool("RunUp", false);
-					moveSpeed = 1;
+					//moveSpeed = 1;
 					transform.Translate(new Vector3(xMove * moveSpeed * Time.deltaTime, 0f, 0f));
 				}
 			}
@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour {
 					anim.SetBool("RunDown", false);
 					anim.SetBool("RunLeft", false);
 					anim.SetBool("RunRight", false);
-					moveSpeed = 1;
+					//moveSpeed = 1;
 					transform.Translate(new Vector3(0f, yMove * moveSpeed * Time.deltaTime, 0f));
 
 				}
@@ -104,14 +104,14 @@ public class PlayerController : MonoBehaviour {
 					anim.SetBool("RunUp", false);
 					anim.SetBool("RunLeft", false);
 					anim.SetBool("RunRight", false);
-					moveSpeed = 1;
+					//moveSpeed = 1;
 					transform.Translate(new Vector3(0f, yMove * moveSpeed * Time.deltaTime, 0f));
 				}
 
 			}
 
 		}else{
-			moveSpeed = 0;
+			//moveSpeed = 0;
 			anim.SetBool("RunLeft", false);
 			anim.SetBool("RunDown", false);
 			anim.SetBool("RunRight", false);
