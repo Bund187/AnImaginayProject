@@ -83,6 +83,19 @@ public class PlayerController : MonoBehaviour {
 					transform.Translate(new Vector3(xMove * moveSpeed * Time.deltaTime, 0f, 0f));
 				}
 			}
+			if (isMovingL && isMovingU)
+			{
+				if (xMove < 0f && yMove > 0f)
+				{
+					//spriteRend.flipX = true;
+					anim.SetBool("RunLeft", true);
+					anim.SetBool("RunDown", false);
+					anim.SetBool("RunRight", false);
+					anim.SetBool("RunUp", true);
+					//moveSpeed = 1;
+					transform.Translate(new Vector3(xMove * moveSpeed * Time.deltaTime, yMove * moveSpeed * Time.deltaTime, 0f));
+				}
+			}
 			if (isMovingU)
 			{
 				if (yMove > 0f)
@@ -96,6 +109,7 @@ public class PlayerController : MonoBehaviour {
 
 				}
 			}
+
 			if (isMovingD)
 			{
 				if (yMove < 0f)
