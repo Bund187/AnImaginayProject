@@ -5,11 +5,12 @@ public class PlayerController : MonoBehaviour {
 
 	public float moveSpeed;
 	public bool canMove;
+	public GameObject shadow;
 
 	GameObject pauseCanvas;
 	bool isMovingL=true, isMovingR = true, isMovingU = true, isMovingD = true;
 	Animator anim;
-	SpriteRenderer spriteRend;
+	SpriteRenderer spriteRend, shadowRend;
 	bool facingRight,isPaused,isPressed;
 	string idiom="esp";
 
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour {
 		anim = GetComponent<Animator>();
 		canMove = true;
 		spriteRend = GetComponent<SpriteRenderer> ();
+		shadowRend = shadow.GetComponent<SpriteRenderer> ();
 	}
 
 	void FixedUpdate(){
@@ -61,59 +63,95 @@ public class PlayerController : MonoBehaviour {
 			{
 				if (xMove > 0f)
 				{
+					shadowRend.sprite = Resources.Load ("ShadowSide", typeof(Sprite)) as Sprite;
+					shadowRend.flipX = true;
 					spriteRend.flipX = false;
 					anim.SetBool("RunRight", true);
 					anim.SetBool("RunDown", false);
 					anim.SetBool("RunUp", false);
+					anim.SetBool("RunLeft", false);
+					anim.SetBool("RunUpLeft", false);
 					//moveSpeed = 1;
 					transform.Translate(new Vector3(xMove * moveSpeed * Time.deltaTime, 0f, 0f));
 
 				}
 			}
+
+
 			if (isMovingL)
 			{
 				if (xMove < 0f)
 				{
+					shadowRend.sprite = Resources.Load ("ShadowSide", typeof(Sprite)) as Sprite;
+					shadowRend.flipX = false;
 					spriteRend.flipX = true;
 					anim.SetBool("RunLeft", true);
 					anim.SetBool("RunDown", false);
 					anim.SetBool("RunRight", false);
 					anim.SetBool("RunUp", false);
+					anim.SetBool("RunUpLeft", false);
 					//moveSpeed = 1;
 					transform.Translate(new Vector3(xMove * moveSpeed * Time.deltaTime, 0f, 0f));
+					if (yMove > 0f)
+					{
+						print ("se mueve arriba izqu");
+						spriteRend.flipX = false;
+						anim.SetBool("RunLeft", false);
+						anim.SetBool("RunDown", false);
+						anim.SetBool("RunRight", false);
+						anim.SetBool("RunUp", false);
+						anim.SetBool("RunUpLeft", true);
+						//moveSpeed = 1;
+						//transform.Translate(new Vector3(xMove * moveSpeed * Time.deltaTime, yMove * moveSpeed * Time.deltaTime, 0f));
+					}
 				}
 			}
-			if (isMovingL && isMovingU)
-			{
-				if (xMove < 0f && yMove > 0f)
-				{
-					//spriteRend.flipX = true;
-					anim.SetBool("RunLeft", true);
-					anim.SetBool("RunDown", false);
-					anim.SetBool("RunRight", false);
-					anim.SetBool("RunUp", true);
-					//moveSpeed = 1;
-					transform.Translate(new Vector3(xMove * moveSpeed * Time.deltaTime, yMove * moveSpeed * Time.deltaTime, 0f));
-				}
-			}
+
 			if (isMovingU)
 			{
 				if (yMove > 0f)
 				{
+					shadowRend.sprite = Resources.Load ("ShadowBack", typeof(Sprite)) as Sprite;
+					shadowRend.flipX = false;
 					anim.SetBool("RunUp", true);
 					anim.SetBool("RunDown", false);
 					anim.SetBool("RunLeft", false);
 					anim.SetBool("RunRight", false);
+					anim.SetBool("RunUpLeft", false);
 					//moveSpeed = 1;
 					transform.Translate(new Vector3(0f, yMove * moveSpeed * Time.deltaTime, 0f));
 
+					if (xMove < 0f) {
+						print ("se mueve arriba izqu");
+						spriteRend.flipX = false;
+						anim.SetBool ("RunLeft", false);
+						anim.SetBool ("RunDown", false);
+						anim.SetBool ("RunRight", false);
+						anim.SetBool ("RunUp", false);
+						anim.SetBool ("RunUpLeft", true);
+						//moveSpeed = 1;
+						//transform.Translate(new Vector3(xMove * moveSpeed * Time.deltaTime, yMove * moveSpeed * Time.deltaTime, 0f));
+					} 
+					if (xMove > 0f) {
+						print ("se mueve arriba derecha");
+						spriteRend.flipX = true;
+						anim.SetBool ("RunLeft", false);
+						anim.SetBool ("RunDown", false);
+						anim.SetBool ("RunRight", false);
+						anim.SetBool ("RunUp", false);
+						anim.SetBool ("RunUpLeft", true);
+					}
+
 				}
 			}
+
 
 			if (isMovingD)
 			{
 				if (yMove < 0f)
 				{
+					shadowRend.sprite = Resources.Load ("ShadowBack", typeof(Sprite)) as Sprite;
+					shadowRend.flipX = true;
 					anim.SetBool("RunDown", true);
 					anim.SetBool("RunUp", false);
 					anim.SetBool("RunLeft", false);
@@ -130,6 +168,7 @@ public class PlayerController : MonoBehaviour {
 			anim.SetBool("RunDown", false);
 			anim.SetBool("RunRight", false);
 			anim.SetBool("RunUp", false);
+			anim.SetBool("RunUpLeft", false);
 		}
 
 
