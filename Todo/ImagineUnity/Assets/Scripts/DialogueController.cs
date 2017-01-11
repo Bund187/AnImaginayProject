@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class DialogueController : MonoBehaviour {
 
 	ArrayList dialogue=new ArrayList();
-
 	int i=0;
 	bool isPress,endDialogue;
 	Text auxDial, auxDials;
+	GameObject player;
 
 	public Text dialogueTxt, dialShadow;
 
@@ -17,6 +17,7 @@ public class DialogueController : MonoBehaviour {
 	void OnTriggerStay2D(Collider2D col){
 		if (col.tag == "Player") {
 			DialogueFunc ();
+			player = col.gameObject;
 		}
 	}
 
@@ -69,9 +70,11 @@ public class DialogueController : MonoBehaviour {
 			}
 
 			if ((Input.GetAxisRaw ("Fire1") != 0)) {
+				player.GetComponent<PlayerController> ().BlockMove = true;
+
 				if (!isPress) {
-					dialogueTxt.text = dialogue [i].ToString();
-					dialShadow.text= dialogue [i].ToString();
+					dialogueTxt.text = dialogue [i].ToString ();
+					dialShadow.text = dialogue [i].ToString ();
 					print ("linea 1 = " + dialogue [i]);
 					i++;
 					isPress = true;

@@ -10,7 +10,7 @@ public class SceneManagerController : MonoBehaviour {
 	}
 	
 
-	void Update () {
+	void FixedUpdate () {
 		SceneManager ();
 	}
 
@@ -30,5 +30,8 @@ public class SceneManagerController : MonoBehaviour {
 				Destroy (transform.gameObject);
 			}
 		}
+		/*if (transform.name == "OutHouse_BG") {
+			GameObject.Find ("Butterflies").transform.Translate (Vector2.right * Time.deltaTime);
+		}*/
 	}
 }

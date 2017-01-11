@@ -15,7 +15,7 @@ public class IntroManager : MonoBehaviour {
 	}
 
 	void Update () {
-		print ("I=" + GameObject.Find ("Backgrnd").GetComponent<DialogueController> ().I);
+		//print ("I=" + GameObject.Find ("Backgrnd").GetComponent<DialogueController> ().I);
 		if (GameObject.Find ("Backgrnd").GetComponent<DialogueController> ().I >= 20) {
 				playerEatH.SetActive (false);
 				playerEat.SetActive (false);
