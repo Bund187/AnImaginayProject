@@ -54,7 +54,6 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Move() {
-		//this.moveSpeed = 1;
 		float xMove = Input.GetAxisRaw("Horizontal");
 		float yMove = Input.GetAxisRaw("Vertical");
 
@@ -70,12 +69,9 @@ public class PlayerController : MonoBehaviour {
 						anim.SetBool ("RunUp", false);
 						anim.SetBool ("RunLeft", false);
 						anim.SetBool ("RunUpLeft", false);
-						//moveSpeed = 1;
 						transform.Translate (new Vector3 (xMove * moveSpeed * Time.deltaTime, 0f, 0f));
-
 					}
 				}
-
 
 				if (isMovingL) {
 					if (xMove < 0f) {
@@ -87,22 +83,10 @@ public class PlayerController : MonoBehaviour {
 						anim.SetBool ("RunRight", false);
 						anim.SetBool ("RunUp", false);
 						anim.SetBool ("RunUpLeft", false);
-						//moveSpeed = 1;
 						transform.Translate (new Vector3 (xMove * moveSpeed * Time.deltaTime, 0f, 0f));
-						if (yMove > 0f) {
-							print ("se mueve arriba izqu");
-							spriteRend.flipX = false;
-							anim.SetBool ("RunLeft", false);
-							anim.SetBool ("RunDown", false);
-							anim.SetBool ("RunRight", false);
-							anim.SetBool ("RunUp", false);
-							anim.SetBool ("RunUpLeft", true);
-							//moveSpeed = 1;
-							//transform.Translate(new Vector3(xMove * moveSpeed * Time.deltaTime, yMove * moveSpeed * Time.deltaTime, 0f));
-						}
+
 					}
 				}
-
 				if (isMovingU) {
 					if (yMove > 0f) {
 						shadowRend.sprite = Resources.Load ("ShadowBack", typeof(Sprite)) as Sprite;
@@ -112,7 +96,6 @@ public class PlayerController : MonoBehaviour {
 						anim.SetBool ("RunLeft", false);
 						anim.SetBool ("RunRight", false);
 						anim.SetBool ("RunUpLeft", false);
-						//moveSpeed = 1;
 						transform.Translate (new Vector3 (0f, yMove * moveSpeed * Time.deltaTime, 0f));
 
 						if (xMove < 0f) {
@@ -123,8 +106,6 @@ public class PlayerController : MonoBehaviour {
 							anim.SetBool ("RunRight", false);
 							anim.SetBool ("RunUp", false);
 							anim.SetBool ("RunUpLeft", true);
-							//moveSpeed = 1;
-							//transform.Translate(new Vector3(xMove * moveSpeed * Time.deltaTime, yMove * moveSpeed * Time.deltaTime, 0f));
 						} 
 						if (xMove > 0f) {
 							print ("se mueve arriba derecha");
@@ -134,11 +115,9 @@ public class PlayerController : MonoBehaviour {
 							anim.SetBool ("RunRight", false);
 							anim.SetBool ("RunUp", false);
 							anim.SetBool ("RunUpLeft", true);
-						}
-
+						} 
 					}
 				}
-
 
 				if (isMovingD) {
 					if (yMove < 0f) {
@@ -148,14 +127,12 @@ public class PlayerController : MonoBehaviour {
 						anim.SetBool ("RunUp", false);
 						anim.SetBool ("RunLeft", false);
 						anim.SetBool ("RunRight", false);
-						//moveSpeed = 1;
 						transform.Translate (new Vector3 (0f, yMove * moveSpeed * Time.deltaTime, 0f));
 					}
 
 				}
 
 			} else {
-				//moveSpeed = 0;
 				anim.SetBool ("RunLeft", false);
 				anim.SetBool ("RunDown", false);
 				anim.SetBool ("RunRight", false);

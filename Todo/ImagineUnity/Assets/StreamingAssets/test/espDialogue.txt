@@ -1,7 +1,15 @@
-�Como te llamas?
+﻿¿Como te llamas?
 ?
 Me llamo Paco
 No te importa
 Quien lo pregunta?
-Jamas te lo dire, adios.
-COMO TE LLAMAS!
+Jamas te lo dire, adios
+0
+Paco... me gusta, es original.
+Yo me llamo Kropul
+1
+Que borde eres niño.
+2
+Lo pregunta Kropul
+3
+Pues vete!

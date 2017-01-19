@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 9e86957065412a94884691b1e26e4998
-timeCreated: 1480682415
+timeCreated: 1484743987
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -30,6 +30,19 @@ TextureImporter:
     21300046: StandUp_50
     21300048: StandUp_52
     21300050: StandUp_54
+    21300052: StandUp_1
+    21300054: StandUp_3
+    21300056: StandUp_5
+    21300058: StandUp_7
+    21300060: StandUp_9
+    21300062: StandUp_11
+    21300064: StandUp_13
+    21300066: StandUp_15
+    21300068: StandUp_17
+    21300070: StandUp_19
+    21300072: StandUp_21
+    21300074: StandUp_23
+    21300076: StandUp_25
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -76,8 +89,8 @@ TextureImporter:
   textureType: 8
   buildTargetSettings:
   - buildTarget: Standalone
-    maxTextureSize: 8192
-    textureFormat: -3
+    maxTextureSize: 4096
+    textureFormat: -1
     compressionQuality: 50
     allowsAlphaSplitting: 0
   spriteSheet:
@@ -87,10 +100,23 @@ TextureImporter:
       name: StandUp_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 4
-        width: 296
-        height: 250
+        x: 1
+        y: 0
+        width: 98
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: StandUp_1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 98
+        height: 83
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -100,10 +126,23 @@ TextureImporter:
       name: StandUp_2
       rect:
         serializedVersion: 2
-        x: 300
-        y: 4
-        width: 296
-        height: 250
+        x: 199
+        y: 0
+        width: 98
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: StandUp_3
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 0
+        width: 98
+        height: 83
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -113,10 +152,23 @@ TextureImporter:
       name: StandUp_4
       rect:
         serializedVersion: 2
-        x: 600
-        y: 4
-        width: 296
-        height: 250
+        x: 397
+        y: 0
+        width: 98
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: StandUp_5
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 0
+        width: 98
+        height: 83
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -126,10 +178,23 @@ TextureImporter:
       name: StandUp_6
       rect:
         serializedVersion: 2
-        x: 900
-        y: 4
-        width: 296
-        height: 250
+        x: 595
+        y: 0
+        width: 98
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: StandUp_7
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 0
+        width: 98
+        height: 83
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,10 +204,23 @@ TextureImporter:
       name: StandUp_8
       rect:
         serializedVersion: 2
-        x: 1200
-        y: 4
-        width: 296
-        height: 250
+        x: 793
+        y: 0
+        width: 98
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: StandUp_9
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 0
+        width: 98
+        height: 83
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,10 +230,23 @@ TextureImporter:
       name: StandUp_10
       rect:
         serializedVersion: 2
-        x: 1500
-        y: 4
-        width: 296
-        height: 250
+        x: 991
+        y: 0
+        width: 98
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: StandUp_11
+      rect:
+        serializedVersion: 2
+        x: 1090
+        y: 0
+        width: 98
+        height: 83
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,10 +256,23 @@ TextureImporter:
       name: StandUp_12
       rect:
         serializedVersion: 2
-        x: 1800
-        y: 4
-        width: 296
-        height: 250
+        x: 1189
+        y: 0
+        width: 98
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: StandUp_13
+      rect:
+        serializedVersion: 2
+        x: 1288
+        y: 0
+        width: 98
+        height: 83
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,10 +282,23 @@ TextureImporter:
       name: StandUp_14
       rect:
         serializedVersion: 2
-        x: 2100
-        y: 4
-        width: 296
-        height: 250
+        x: 1387
+        y: 0
+        width: 98
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: StandUp_15
+      rect:
+        serializedVersion: 2
+        x: 1486
+        y: 0
+        width: 98
+        height: 83
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,10 +308,23 @@ TextureImporter:
       name: StandUp_16
       rect:
         serializedVersion: 2
-        x: 2400
-        y: 4
-        width: 296
-        height: 250
+        x: 1585
+        y: 0
+        width: 98
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: StandUp_17
+      rect:
+        serializedVersion: 2
+        x: 1684
+        y: 0
+        width: 98
+        height: 83
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,10 +334,23 @@ TextureImporter:
       name: StandUp_18
       rect:
         serializedVersion: 2
-        x: 2700
-        y: 4
-        width: 296
-        height: 250
+        x: 1783
+        y: 0
+        width: 98
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: StandUp_19
+      rect:
+        serializedVersion: 2
+        x: 1882
+        y: 0
+        width: 98
+        height: 83
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,10 +360,23 @@ TextureImporter:
       name: StandUp_20
       rect:
         serializedVersion: 2
-        x: 3000
-        y: 4
-        width: 296
-        height: 250
+        x: 1981
+        y: 0
+        width: 98
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: StandUp_21
+      rect:
+        serializedVersion: 2
+        x: 2080
+        y: 0
+        width: 98
+        height: 83
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -230,10 +386,23 @@ TextureImporter:
       name: StandUp_22
       rect:
         serializedVersion: 2
-        x: 3300
-        y: 4
-        width: 296
-        height: 250
+        x: 2179
+        y: 0
+        width: 98
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: StandUp_23
+      rect:
+        serializedVersion: 2
+        x: 2278
+        y: 0
+        width: 98
+        height: 83
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -243,179 +412,23 @@ TextureImporter:
       name: StandUp_24
       rect:
         serializedVersion: 2
-        x: 3600
-        y: 4
-        width: 296
-        height: 250
+        x: 2377
+        y: 0
+        width: 98
+        height: 83
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: StandUp_26
+      name: StandUp_25
       rect:
         serializedVersion: 2
-        x: 3900
-        y: 4
-        width: 296
-        height: 250
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: StandUp_28
-      rect:
-        serializedVersion: 2
-        x: 4200
-        y: 4
-        width: 296
-        height: 250
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: StandUp_30
-      rect:
-        serializedVersion: 2
-        x: 4500
-        y: 4
-        width: 296
-        height: 250
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: StandUp_32
-      rect:
-        serializedVersion: 2
-        x: 4800
-        y: 4
-        width: 296
-        height: 250
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: StandUp_34
-      rect:
-        serializedVersion: 2
-        x: 5100
-        y: 4
-        width: 296
-        height: 250
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: StandUp_37
-      rect:
-        serializedVersion: 2
-        x: 5400
-        y: 4
-        width: 296
-        height: 250
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: StandUp_40
-      rect:
-        serializedVersion: 2
-        x: 5700
-        y: 4
-        width: 296
-        height: 250
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: StandUp_43
-      rect:
-        serializedVersion: 2
-        x: 6000
-        y: 4
-        width: 296
-        height: 250
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: StandUp_46
-      rect:
-        serializedVersion: 2
-        x: 6300
-        y: 4
-        width: 296
-        height: 250
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: StandUp_48
-      rect:
-        serializedVersion: 2
-        x: 6600
-        y: 4
-        width: 296
-        height: 250
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: StandUp_50
-      rect:
-        serializedVersion: 2
-        x: 6900
-        y: 4
-        width: 296
-        height: 250
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: StandUp_52
-      rect:
-        serializedVersion: 2
-        x: 7200
-        y: 4
-        width: 296
-        height: 250
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: StandUp_54
-      rect:
-        serializedVersion: 2
-        x: 7500
-        y: 4
-        width: 296
-        height: 250
+        x: 2476
+        y: 0
+        width: 98
+        height: 83
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

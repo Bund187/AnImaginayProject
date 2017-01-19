@@ -7,13 +7,14 @@ public class DialogueController : MonoBehaviour {
 
 	ArrayList dialogue=new ArrayList();
 	int i=0;
-	bool isPress,endDialogue, isAnswering;
+	bool isPress,isPress2,endDialogue, isAnswering,exit = false;
 	Text auxDial, auxDials;
 	GameObject player;
 
 	public Text dialogueTxt, dialShadow;
 	public GameObject answerBlock;
 
+	//Al colisionar el jugador con el npc hablante se ejecuta la funcion del dialogo.
 	void OnTriggerStay2D(Collider2D col){
 		if (col.tag == "Player") {
 			DialogueFunc();
@@ -23,8 +24,11 @@ public class DialogueController : MonoBehaviour {
 	}
 
 	public void DialogueFunc(){
-		
+
+		//Se divide en dos partes el dialogo
 		StreamReader reader =null;
+
+		//La primera parte es referente a la intro. Chekea que el background tiene el script IntroManager
 		if ((GameObject.Find ("Backgrnd").GetComponent ("IntroManager") as IntroManager) != null) {
 			reader = new StreamReader (Application.dataPath + "/StreamingAssets/intro/" /*+ GameObject.Find ("Player").GetComponent<PlayerController> ().Idiom*/ + "espDialogue.txt");
 			dialogue.Clear ();
@@ -34,7 +38,7 @@ public class DialogueController : MonoBehaviour {
 			if (i >= dialogue.Count) {
 				i = 0;
 			}
-
+			//Aqui el lector va leyendo cual es la linea de la madre(M) o del player(P). (-)Hace referencia a los silencios. (x) Hace referencia al final de la conversacion
 			if ((Input.GetAxisRaw ("Fire1") != 0)) {
 				if (!isPress) {
 					if (dialogue [i].ToString() == "P") {
@@ -60,6 +64,7 @@ public class DialogueController : MonoBehaviour {
 			} else
 				isPress = false;
 
+			//Si el background no tiene el script arriba indicado se ejecuta la segunda parte de este script. Este hace referencia al dialogo con NPCs.
 		} else {
 			reader = new StreamReader (Application.dataPath + "/StreamingAssets" + "/" + gameObject.name + "/" + GameObject.Find ("Player").GetComponent<PlayerController> ().Idiom + "Dialogue.txt");
 			dialogue.Clear ();
@@ -69,12 +74,20 @@ public class DialogueController : MonoBehaviour {
 			if (i >= dialogue.Count) {
 				i = 0;
 			}
+			//Si no esta respondiendo hace referencia a las respuestas del player
 			if (!isAnswering) {
 				if ((Input.GetAxisRaw ("Fire1") != 0)) {
-				
-					//player.GetComponent<PlayerController> ().BlockMove = true;
-
 					if (!isPress) {
+
+						//Si el lector encuentra un "?" quiere decir que el player puede responder por lo tanto se inicia el sistema de respuesta.
+						if (exit) {
+							print ("parando corrutina");
+							StopCoroutine (AnswerManager ());
+							player.GetComponent<PlayerController> ().BlockMove = false;
+							answerBlock.SetActive (false);
+
+						}
+
 						if (dialogue [i].ToString () == "?") {
 							dialogueTxt.text = "";
 							dialShadow.text = "";
@@ -99,6 +112,7 @@ public class DialogueController : MonoBehaviour {
 						}
 					
 					}
+
 				} else
 					isPress = false;
 			}
@@ -112,10 +126,13 @@ public class DialogueController : MonoBehaviour {
 	}
 
 	IEnumerator AnswerManager(){
+		
 		int j = 0;
-		bool exit = false;
+		bool isChoosing=true;
 		isAnswering = true;
+		exit = false;
 		while (!exit) {
+			
 			if (Input.GetAxisRaw ("Vertical") < 0) {
 				if (!isPress) {
 					for (int k = 0; k < 4; k++) {
@@ -125,7 +142,6 @@ public class DialogueController : MonoBehaviour {
 					if (j == 4)
 						j = 0;
 					answerBlock.GetComponent<UIAnswerController> ().answers [j].color = Color.yellow;
-
 					isPress = true;
 
 				}
@@ -138,7 +154,6 @@ public class DialogueController : MonoBehaviour {
 					if (j == -1)
 						j = 3;
 					answerBlock.GetComponent<UIAnswerController> ().answers [j].color = Color.yellow;
-
 					isPress = true;
 
 				}
@@ -146,15 +161,38 @@ public class DialogueController : MonoBehaviour {
 				isPress = false;
 			}
 
-			if (Input.GetKeyDown (KeyCode.U)) {
-				exit = true;
+			if (isChoosing) {
+				yield return new WaitForSeconds (0.5f);
+				isChoosing = false;
 			}
+
+			ChoosingOption (j);
 			yield return null;
 		}
-		print ("press=" + isPress);
 		isAnswering = false;
 
 
+	}
+
+	void ChoosingOption(int index){
+		if ((Input.GetAxisRaw ("Fire1") !=0)) {
+			print ("escojiendo opcion");
+			if (!isPress2) {
+				for (int i = 0; i < 4; i++) {
+					if (i != index) {
+						answerBlock.GetComponent<UIAnswerController> ().answers [i].text = "";
+						if (index == 3) {
+							print ("salir del bucle, exit");
+							exit = true;
+						}
+					}
+						answerBlock.GetComponent<UIAnswerController> ().answers [i].color = Color.white;
+				}
+
+				isPress2 = true;
+			}
+		} else
+			isPress2 = false;
 	}
 
 	public ArrayList Dialogue {
