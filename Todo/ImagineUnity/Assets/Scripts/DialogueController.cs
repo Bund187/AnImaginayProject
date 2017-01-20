@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class DialogueController : MonoBehaviour {
 
 	ArrayList dialogue=new ArrayList();
-	int i=0;
-	bool isPress,isPress2,endDialogue, isAnswering,exit = false;
+	int i=0, j = 0;
+	bool isPress,isPress2,endDialogue, isAnswering,exit = false,answerFound = false;
 	Text auxDial, auxDials;
 	GameObject player;
 
@@ -24,6 +24,13 @@ public class DialogueController : MonoBehaviour {
 	}
 
 	public void DialogueFunc(){
+		if (exit) {
+			print ("parando corrutina");
+			player.GetComponent<PlayerController> ().BlockMove = false;
+			answerBlock.SetActive (false);
+			j = 0;
+			exit = false;
+		}
 
 		//Se divide en dos partes el dialogo
 		StreamReader reader =null;
@@ -80,15 +87,9 @@ public class DialogueController : MonoBehaviour {
 					if (!isPress) {
 
 						//Si el lector encuentra un "?" quiere decir que el player puede responder por lo tanto se inicia el sistema de respuesta.
-						if (exit) {
-							print ("parando corrutina");
-							StopCoroutine (AnswerManager ());
-							player.GetComponent<PlayerController> ().BlockMove = false;
-							answerBlock.SetActive (false);
-
-						}
-
 						if (dialogue [i].ToString () == "?") {
+							print ("·valor de la i=" + i);
+							print ("empezando rspuestas");
 							dialogueTxt.text = "";
 							dialShadow.text = "";
 							player.GetComponent<PlayerController> ().BlockMove = true;
@@ -104,15 +105,13 @@ public class DialogueController : MonoBehaviour {
 
 						}
 						if (dialogue [i].ToString ().Length > 1) {
-							dialogueTxt.text = dialogue [i].ToString ();
-							dialShadow.text = dialogue [i].ToString ();
-							print ("linea 1 = " + dialogue [i] + " longitud="+dialogue [i].ToString ().Length);
+							Talking (i);
 							i++;
-							isPress = true;
-						}
-					
-					}
 
+						}
+
+						isPress = true;
+					}
 				} else
 					isPress = false;
 			}
@@ -120,9 +119,17 @@ public class DialogueController : MonoBehaviour {
 
 	}
 
+	void Talking(int index){
+		dialogueTxt.text = dialogue [index].ToString ();
+		dialShadow.text = dialogue [index].ToString ();
+		print ("linea 1 = " + dialogue [index] + " longitud="+dialogue [index].ToString ().Length);
+
+	}
+
 	void OnTriggerExit2D(Collider2D col){
 		dialogueTxt.text = "";
 		dialShadow.text = "";
+
 	}
 
 	IEnumerator AnswerManager(){
@@ -175,19 +182,46 @@ public class DialogueController : MonoBehaviour {
 	}
 
 	void ChoosingOption(int index){
+		
 		if ((Input.GetAxisRaw ("Fire1") !=0)) {
-			print ("escojiendo opcion");
+			
 			if (!isPress2) {
 				for (int i = 0; i < 4; i++) {
 					if (i != index) {
 						answerBlock.GetComponent<UIAnswerController> ().answers [i].text = "";
 						if (index == 3) {
-							print ("salir del bucle, exit");
+							print ("diciendo adios");
+							isAnswering = false;
 							exit = true;
 						}
 					}
-						answerBlock.GetComponent<UIAnswerController> ().answers [i].color = Color.white;
+					answerBlock.GetComponent<UIAnswerController> ().answers [i].color = Color.white;
 				}
+				if ((Input.GetAxisRaw ("Fire1") !=0)) {
+					answerBlock.SetActive (false);
+					if (!isPress) {
+						while (!answerFound) {
+							if (dialogue [j].ToString () == index.ToString ()) {
+								answerFound = true;
+							}
+							j++;
+						}
+						if (dialogue [j].ToString () != "." && answerFound) {
+							Talking (j);
+							j++;
+						}
+						if (dialogue [j].ToString () == ".") {
+							print ("diciendo adios");
+							dialogueTxt.text = "";
+							dialShadow.text = "";	
+							isAnswering = false;
+							exit = true;
+						}
+					}
+					isPress = true;
+
+				}else
+					isPress = false;
 
 				isPress2 = true;
 			}
